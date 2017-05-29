@@ -8,4 +8,6 @@
 
 std::vector<std::string> configurationReader(std::string filepath);
 std::string betweenQuotes(std::string s);
+int intParser(std::string s);
+
 #endif //WORDSCOUNTER_CONFIGURATIONREADER_H
