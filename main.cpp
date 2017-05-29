@@ -1,22 +1,28 @@
 #include <iostream>
 #include <map>
 #include <thread>
-#include <string>
 #include <sstream>
+#include <cmath>
+#include <algorithm>
 #include "linesCounter.h"
 #include "countingFunctions.h"
+#include "configurationReader.h"
+#include "outPutFunc.h"
+using namespace std;
 
-int main() {
-    int threadsNumber = 4; // argument
-    string fileName = "example.txt"; // argument
-    long int linesNumber = linesCounter("example.txt");
+
+int main(int argc, char *argv[]) {
+    vector<string> arguments = configurationReader(argv[1]);
+    string nameInputFile = betweenQuotes(arguments[0]);
+    string nameOutputFileAlphabet = betweenQuotes(arguments[1]);
+    string nameOupputFileNumber = betweenQuotes(arguments[2]);
+    int threadsNumber = 3;
+    long int linesNumber = linesCounter(nameInputFile);
     int batches_number = int(ceil((double)linesNumber / (double)threadsNumber));
-    long int currentLine = 0;
-    map<string, int> result = readFile("example.txt", threadsNumber, batches_number);
-//    for (const auto &p : result) {
-//        std::cout <<p.first << ": " << p.second << '\n';
-//    }
-    cout<<result.size();
+    map<string, int> result = readFile(nameInputFile, threadsNumber, batches_number);
+    writeByAlphabet(result, "alphab.txt");
+    writeByNumber(result, "number.txt");
+
 
 //------------------------ OLD WERSION WITHOUT THREADS-----------------------
 //    for(int j = 0; j < 10) {

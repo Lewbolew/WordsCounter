@@ -36,3 +36,24 @@ vector<string> readFile(string fileName, long int desiredLine, long int endLine)
     file.close();
     return vectorWords;
 }
+
+vector<string> readFromFile(const string& filename) {
+    vector<string> words;
+    fstream fin(filename); //full path to the file
+    if (!fin.is_open()) {
+        cout << "error reading from file";
+        return words;
+    }
+
+    string line;
+
+    while (getline(fin, line)) {
+        std::istringstream iss(line);
+        string word;
+        while (iss >> word) {
+            words.push_back(word);
+        }
+
+    }
+    return words;
+}

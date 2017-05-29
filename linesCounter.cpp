@@ -2,6 +2,9 @@
 // Created by bohdan on 5/26/17.
 //
 #include <string>
+#include <fstream>
+#include <cmath>
+#include "linesCounter.h"
 using namespace std;
 
 long int linesCounter(string fileName) {
@@ -14,3 +17,4 @@ long int linesCounter(string fileName) {
     }
     return linesNumber;
 }
+

@@ -10,6 +10,7 @@
 #include <string>
 #include <algorithm>
 #include <string>
+#include <sstream>
 
 using namespace std;
 void wordsCount(vector<string> strings, map<string, int> &countedWords, mutex &m) {
